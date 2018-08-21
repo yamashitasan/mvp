@@ -8,8 +8,8 @@
 
 import UIKit
 import GoogleMaps
-//import Alamofire
-//import SwiftyJSON
+import Alamofire
+import SwiftyJSON
 
 class ViewController: UIViewController, GMSMapViewDelegate {
 
