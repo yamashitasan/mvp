@@ -11,7 +11,7 @@ import GoogleMaps
 import Alamofire
 import SwiftyJSON
 
-class ViewController: UIViewController, GMSMapViewDelegate {
+class MapViewController: UIViewController, GMSMapViewDelegate {
 
     lazy var mapView = GMSMapView()
     var points : [CLLocationCoordinate2D] = []
@@ -26,17 +26,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         
         mapView.delegate = self
         view = mapView
-        
-        let data = readFile(name: "data", type: "csv")
-        //draw markers for restaurants in dataset
-        for restaurant in data {
-            let store = Store(restaurant: restaurant)
-            let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2DMake(store.langitude!, store.longitude!)
-            marker.title = store.name
-            marker.snippet = store.genre
-            marker.map = mapView
-        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,6 +64,17 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         return false
     }
     
+    func drawMap(data: [[String]]) {
+        for restaurant in data {
+            let store = Store(restaurant: restaurant)
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2DMake(store.langitude!, store.longitude!)
+            marker.title = store.name
+            marker.snippet = store.genre
+            marker.map = mapView
+        }
+    }
+    
     func drawPath(points:[CLLocationCoordinate2D]) {
         if points.count > 1 {
             for index in 2...points.count {
@@ -107,26 +108,5 @@ class ViewController: UIViewController, GMSMapViewDelegate {
             }
         }
     }
-    
-    //read csv file and make double array from it
-    func readFile(name: String, type: String) -> [[String]] {
-        if let filepath = Bundle.main.path(forResource: name, ofType: type) {
-            do {
-                let text = try String(contentsOfFile: filepath)
-                var result: [[String]] = []
-                let rows = text.components(separatedBy: "\n")
-                for row in rows {
-                    let columns = row.components(separatedBy: ",")
-                    result.append(columns)
-                }
-                return result
-            } catch {
-                fatalError()
-            }
-        } else {
-            fatalError()
-        }
-    }
-
 }
 
