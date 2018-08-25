@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -59,6 +60,42 @@
             </objects>
             <point key="canvasLocation" x="2366" y="11"/>
         </scene>
+        <!--Info View Controller-->
+        <scene sceneID="8FK-tg-ad8">
+            <objects>
+                <viewController storyboardIdentifier="InfoViewController" id="BUr-cc-x2V" customClass="InfoViewController" customModule="mvp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cJw-1S-i3u">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h3O-aP-adr">
+                                <rect key="frame" x="37.5" y="76.5" width="300" height="534"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="h3O-aP-adr" firstAttribute="width" secondItem="cJw-1S-i3u" secondAttribute="width" multiplier="0.8" id="5BW-CC-2hh"/>
+                            <constraint firstItem="h3O-aP-adr" firstAttribute="height" secondItem="cJw-1S-i3u" secondAttribute="height" multiplier="0.8" id="f03-Xj-SVU"/>
+                            <constraint firstItem="h3O-aP-adr" firstAttribute="centerX" secondItem="0IE-OH-MNd" secondAttribute="centerX" id="s9h-NV-zIz"/>
+                            <constraint firstItem="h3O-aP-adr" firstAttribute="centerY" secondItem="0IE-OH-MNd" secondAttribute="centerY" id="yz7-e2-knW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0IE-OH-MNd"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="N3M-J9-KUM" appends="YES" id="ghZ-Fw-Cri"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Weh-K2-zfj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="N3M-J9-KUM">
+                    <connections>
+                        <action selector="tabBackground:" destination="BUr-cc-x2V" id="Qgh-c9-0zk"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3383" y="-96"/>
+        </scene>
         <!--Route View Controller-->
         <scene sceneID="07J-sI-sSa">
             <objects>
@@ -72,23 +109,6 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6sy-1F-foR" id="BPF-XV-R8I">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Sample Text" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PVl-Gr-dEV">
-                                            <rect key="frame" x="12" y="6" width="100" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="IqZ-PY-yGk">
-                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IqZ-PY-yGk" id="FdQ-4K-eXy">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>

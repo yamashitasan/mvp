@@ -53,6 +53,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
             points.append(marker.position)
         }
         
+        let mainVC = self.parent as! MainViewController
+        mainVC.orderRefreshCells(points: points)
+        
         let path = GMSMutablePath()
         
         //clear lines in map
@@ -62,6 +65,15 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         
         drawPath(points: points)
         return false
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "InfoViewController") as! InfoViewController
+        presentedViewController.modalPresentationStyle = .overCurrentContext
+        presentedViewController.modalTransitionStyle = .crossDissolve //tap store.info action
+        self.present(presentedViewController, animated: true, completion: nil)
+         
+        
     }
     
     func drawMap(data: [[String]]) {

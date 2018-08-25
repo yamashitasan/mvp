@@ -21,6 +21,7 @@
 		CAD482522127B16600AC560F /* data.csv in Resources */ = {isa = PBXBuildFile; fileRef = CAD482512127B16600AC560F /* data.csv */; };
 		CAEC056121313315003FD123 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEC056021313315003FD123 /* MainViewController.swift */; };
 		CAEC056321313956003FD123 /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEC056221313956003FD123 /* RouteViewController.swift */; };
+		CAEC05652131594B003FD123 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEC05642131594B003FD123 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		CAD482512127B16600AC560F /* data.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.csv; sourceTree = "<group>"; };
 		CAEC056021313315003FD123 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CAEC056221313956003FD123 /* RouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
+		CAEC05642131594B003FD123 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		DADBD9E550F892A5A8659C88 /* Pods-mvp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mvp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mvp/Pods-mvp.debug.xcconfig"; sourceTree = "<group>"; };
 		E28BA2BE1964AF1E9A117715 /* Pods_mvpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mvpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7057F543CDBAED5B8A8A831 /* Pods-mvpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mvpUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mvpUITests/Pods-mvpUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				CA23DE4F2126E83C00448F1E /* Main.storyboard */,
 				CAD4824F2127B0EE00AC560F /* Model.swift */,
 				CAEC056021313315003FD123 /* MainViewController.swift */,
+				CAEC05642131594B003FD123 /* InfoViewController.swift */,
 				CAEC056221313956003FD123 /* RouteViewController.swift */,
 				CAD482512127B16600AC560F /* data.csv */,
 				CA23DE522126E83C00448F1E /* Assets.xcassets */,
@@ -419,6 +422,7 @@
 				CA23DE4E2126E83C00448F1E /* MapViewController.swift in Sources */,
 				CA23DE4C2126E83C00448F1E /* AppDelegate.swift in Sources */,
 				CAEC056321313956003FD123 /* RouteViewController.swift in Sources */,
+				CAEC05652131594B003FD123 /* InfoViewController.swift in Sources */,
 				CAEC056121313315003FD123 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -43,6 +43,8 @@ class RouteViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "store", for: indexPath)
 
+        cell.textLabel?.text = String(points[indexPath.row].latitude)
+        
         // Configure the cell...
 
         return cell

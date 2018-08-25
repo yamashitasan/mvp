@@ -8,6 +8,7 @@
 
 import Foundation
 import Pulley
+import GoogleMaps
 
 class MainViewController: PulleyViewController {
     override func viewDidLoad() {
@@ -18,6 +19,12 @@ class MainViewController: PulleyViewController {
         let mapVC = primaryContentViewController as! MapViewController
         mapVC.drawMap(data: data)
         
+    }
+    
+    func orderRefreshCells(points: [CLLocationCoordinate2D]) {
+        let routeVC = drawerContentViewController.childViewControllers[0] as! RouteViewController
+        routeVC.points = points
+        routeVC.refreshCells()
     }
     
     func readFile(name: String, type: String) -> [[String]] {
