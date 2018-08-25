@@ -70,16 +70,42 @@ class ViewController: UIViewController, GMSMapViewDelegate {
             line.map = nil
         }
         
-        
-        for point in points {
-            path.add(point)
-            let line = GMSPolyline(path: path)
-            line.strokeWidth = 3.0
-            line.strokeColor = UIColor.red
-            line.map = mapView
-            lines.append(line)
-        }
+        drawPath(points: points)
         return false
+    }
+    
+    func drawPath(points:[CLLocationCoordinate2D]) {
+        if points.count > 1 {
+            for index in 2...points.count {
+                let origin = "\(points[index-2].latitude),\(points[index-2].longitude)"
+                let destination = "\(points[index-1].latitude),\(points[index-1].longitude)"
+                
+                let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=walking&key=AIzaSyB4jL4U0lVE7gKM2eUmBXAdy1Y7ngkQ0xI"
+                
+                Alamofire.request(url).responseJSON { response in
+                    do {
+                        let json = try JSON(data: response.data!)
+
+                        let routes = json["routes"].arrayValue
+                    
+                        for route in routes {
+                            let routeOverviewPolyline = route["overview_polyline"].dictionary
+                            let points = routeOverviewPolyline?["points"]?.stringValue
+                            let path = GMSPath.init(fromEncodedPath: points!)
+                            let polyline = GMSPolyline.init(path: path)
+                            polyline.strokeColor = UIColor.red
+                            polyline.strokeWidth = 3.0
+                            self.lines.append(polyline)
+                            polyline.map = self.mapView
+                        }
+                    } catch {
+                        fatalError()
+                    }
+                    
+                }
+
+            }
+        }
     }
     
     //read csv file and make double array from it
