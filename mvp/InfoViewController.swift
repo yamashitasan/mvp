@@ -10,10 +10,19 @@ import UIKit
 
 class InfoViewController: UIViewController {
 
+
+    @IBOutlet weak var nameLabel: UILabel!
+    lazy var name = String()
+    
+    @IBOutlet weak var genreLabel: UILabel!
+    lazy var genre = String()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.nameLabel.text = self.name
+        self.genreLabel.text = self.genre
     }
 
     override func didReceiveMemoryWarning() {

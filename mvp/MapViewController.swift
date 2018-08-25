@@ -69,11 +69,11 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "InfoViewController") as! InfoViewController
+        presentedViewController.name = marker.title! //nameLabel を代入したものがこれ
+        presentedViewController.genre = marker.snippet! //下段85行目くらいmarker=snipet
         presentedViewController.modalPresentationStyle = .overCurrentContext
         presentedViewController.modalTransitionStyle = .crossDissolve //tap store.info action
         self.present(presentedViewController, animated: true, completion: nil)
-         
-        
     }
     
     func drawMap(data: [[String]]) {
