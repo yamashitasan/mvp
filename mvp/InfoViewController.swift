@@ -10,27 +10,34 @@ import UIKit
 
 class InfoViewController: UIViewController {
 
-
+    lazy var store = Store(restaurant: [])
+    
     @IBOutlet weak var nameLabel: UILabel!
-    lazy var name = String()
     
     @IBOutlet weak var genreLabel: UILabel!
-    lazy var genre = String()
     
     @IBOutlet weak var lunchLabel: UILabel!
-    lazy var lunch = String()
+    
+    @IBOutlet weak var urlLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.nameLabel.text = self.name
-        self.genreLabel.text = self.genre
+        self.nameLabel.text = self.store.name
+        self.genreLabel.text = self.store.genre
+        self.lunchLabel.text = self.store.lunch
+        self.urlLabel.text = self.store.url
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func setRestaurantInfo(restaurant: Store) {
+        self.store = restaurant
+    }
+    
     
     @IBAction func tabBackground(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

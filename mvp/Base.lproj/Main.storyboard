@@ -98,16 +98,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="url Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWe-pS-qzB">
+                                <rect key="frame" x="111" y="451" width="157" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="h3O-aP-adr" firstAttribute="width" secondItem="cJw-1S-i3u" secondAttribute="width" multiplier="0.8" id="5BW-CC-2hh"/>
                             <constraint firstItem="P8v-iT-QoU" firstAttribute="centerX" secondItem="h3O-aP-adr" secondAttribute="centerX" id="8DY-Va-G3u"/>
+                            <constraint firstItem="HWe-pS-qzB" firstAttribute="centerX" secondItem="0IE-OH-MNd" secondAttribute="centerX" id="DZb-dO-co1"/>
                             <constraint firstItem="qXv-8K-p64" firstAttribute="top" secondItem="h3O-aP-adr" secondAttribute="top" constant="10" id="LPu-aD-WM5"/>
                             <constraint firstItem="h3O-aP-adr" firstAttribute="height" secondItem="cJw-1S-i3u" secondAttribute="height" multiplier="0.8" id="f03-Xj-SVU"/>
                             <constraint firstItem="P8v-iT-QoU" firstAttribute="centerY" secondItem="h3O-aP-adr" secondAttribute="centerY" id="hR8-s5-Lad"/>
                             <constraint firstItem="qXv-8K-p64" firstAttribute="width" secondItem="h3O-aP-adr" secondAttribute="width" id="huo-qq-WT9"/>
+                            <constraint firstItem="0IE-OH-MNd" firstAttribute="bottom" secondItem="HWe-pS-qzB" secondAttribute="bottom" constant="150" id="j5d-DT-C12"/>
                             <constraint firstItem="qXv-8K-p64" firstAttribute="centerX" secondItem="h3O-aP-adr" secondAttribute="centerX" id="lfK-VR-PLl"/>
                             <constraint firstItem="h3O-aP-adr" firstAttribute="centerX" secondItem="0IE-OH-MNd" secondAttribute="centerX" id="s9h-NV-zIz"/>
                             <constraint firstItem="P8v-iT-QoU" firstAttribute="width" secondItem="h3O-aP-adr" secondAttribute="width" id="yaf-Th-9dW"/>
@@ -122,6 +130,7 @@
                         <outlet property="genreLabel" destination="P8v-iT-QoU" id="ARv-bE-LfW"/>
                         <outlet property="lunchLabel" destination="oB0-b4-kAV" id="adc-vV-Nhe"/>
                         <outlet property="nameLabel" destination="qXv-8K-p64" id="Mah-Ca-EEX"/>
+                        <outlet property="urlLabel" destination="HWe-pS-qzB" id="65q-4V-3NK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Weh-K2-zfj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -131,7 +140,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3383" y="-96"/>
+            <point key="canvasLocation" x="3381.5999999999999" y="-96.7016491754123"/>
         </scene>
         <!--Route View Controller-->
         <scene sceneID="07J-sI-sSa">

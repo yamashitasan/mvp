@@ -13,11 +13,15 @@ class Store {
     var genre : String?
     var langitude : Double?
     var longitude : Double?
+    var lunch : String?
+    var url : String?
     
     init(restaurant : [String]) {
         self.name = restaurant[0]
         self.genre = restaurant[1]
         self.langitude = Double(restaurant[2])
         self.longitude = Double(restaurant[3])
+        self.lunch = restaurant[4]
+        self.url = restaurant[6]
     }
 }

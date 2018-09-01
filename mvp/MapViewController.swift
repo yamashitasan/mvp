@@ -21,7 +21,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let camera = GMSCameraPosition.camera(withLatitude: 35.6841105, longitude: 139.6999833, zoom: 15.0)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         
@@ -34,16 +34,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func isSameCoordinates(first: CLLocationCoordinate2D, second: CLLocationCoordinate2D) -> Bool {
-        //compare latitude and longitude of 2 coordinates and return true or false
-        if first.latitude == second.latitude &&
-            first.longitude == second.longitude {
-            return true
-        }
-        return false
-    }
-    
+
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         
         let tappedStore = marker.userData as! Store
@@ -67,9 +58,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "InfoViewController") as! InfoViewController
-        presentedViewController.name = marker.title! //nameLabel を代入したものがこれ
-        presentedViewController.genre = marker.snippet! //下段85行目くらいmarker=snipet
-        //presentedViewController.lunch = marker.//????
+        let tappedStore = marker.userData as! Store
+        presentedViewController.setRestaurantInfo(restaurant: tappedStore)
+
         presentedViewController.modalPresentationStyle = .overCurrentContext
         presentedViewController.modalTransitionStyle = .crossDissolve //tap store.info action
         self.present(presentedViewController, animated: true, completion: nil)
