@@ -14,7 +14,8 @@ import SwiftyJSON
 class MapViewController: UIViewController, GMSMapViewDelegate {
 
     lazy var mapView = GMSMapView()
-    var points : [CLLocationCoordinate2D] = []
+    var allStores : [Store] = []
+    var activatedStores : [Store] = []
     lazy var lines : [GMSPolyline] = []
     
     
@@ -44,26 +45,23 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        if let index = points.index(where: { isSameCoordinates(first: $0, second: marker.position) }) {
-            //if tapped before, remove point from array
-            points.remove(at: index)
-            
+        
+        let tappedStore = marker.userData as! Store
+        if let index = activatedStores.index(where: { $0.name == tappedStore.name}) {
+            activatedStores.remove(at: index)
         } else {
-            //if never tapped before, append to array
-            points.append(marker.position)
+            activatedStores.append(tappedStore)
         }
         
         let mainVC = self.parent as! MainViewController
-        mainVC.orderRefreshCells(points: points)
-        
-        let path = GMSMutablePath()
+        mainVC.orderRefreshCells(activatedStores: activatedStores)
         
         //clear lines in map
         for line in lines {
             line.map = nil
         }
         
-        drawPath(points: points)
+        drawPath(between: activatedStores)
         return false
     }
     
@@ -78,24 +76,24 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     }
     
     func drawMap(data: [Store]) {
-        for restaurant in data {
+        allStores = data
+        for restaurant in allStores {
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2DMake(restaurant.langitude!, restaurant.longitude!)
             marker.title = restaurant.name
             marker.snippet = restaurant.genre
-            marker.setValue(restaurant.name, forKey: "name")
+            marker.userData = restaurant
             marker.map = mapView
         }
     }
     
-    func drawPath(points:[CLLocationCoordinate2D]) {
-        if points.count > 1 {
-            for index in 2...points.count {
-                let origin = "\(points[index-2].latitude),\(points[index-2].longitude)"
-                let destination = "\(points[index-1].latitude),\(points[index-1].longitude)"
-                
+    func drawPath(between restaurants:[Store]) {
+        if restaurants.count > 1 {
+            for index in 2...restaurants.count {
+                let origin = "\(restaurants[index-2].langitude ?? 0),\(restaurants[index-2].longitude ?? 0)"
+                let destination = "\(restaurants[index-1].langitude ?? 0),\(restaurants[index-1].longitude ?? 0)"
                 let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=walking&key=AIzaSyB4jL4U0lVE7gKM2eUmBXAdy1Y7ngkQ0xI"
-                
+                print(url)
                 Alamofire.request(url).responseJSON { response in
                     do {
                         let json = try JSON(data: response.data!)

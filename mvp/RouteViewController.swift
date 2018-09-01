@@ -11,7 +11,7 @@ import GoogleMaps
 
 class RouteViewController: UITableViewController {
     
-    var points : [CLLocationCoordinate2D] = []
+    var showingStores : [Store] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +37,13 @@ class RouteViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return points.count
+        return showingStores.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "store", for: indexPath)
 
-        cell.textLabel?.text = String(points[indexPath.row].latitude)
+        cell.textLabel?.text = showingStores[indexPath.row].name
         
         // Configure the cell...
 

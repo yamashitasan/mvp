@@ -25,9 +25,9 @@ class MainViewController: PulleyViewController {
         
     }
     
-    func orderRefreshCells(points: [CLLocationCoordinate2D]) {
+    func orderRefreshCells(activatedStores: [Store]) {
         let routeVC = drawerContentViewController.childViewControllers[0] as! RouteViewController
-        routeVC.points = points
+        routeVC.showingStores = activatedStores
         routeVC.refreshCells()
     }
     
