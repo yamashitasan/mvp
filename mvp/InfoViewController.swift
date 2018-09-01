@@ -17,6 +17,8 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var genreLabel: UILabel!
     lazy var genre = String()
     
+    @IBOutlet weak var lunchLabel: UILabel!
+    lazy var lunch = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()

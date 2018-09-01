@@ -71,6 +71,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "InfoViewController") as! InfoViewController
         presentedViewController.name = marker.title! //nameLabel を代入したものがこれ
         presentedViewController.genre = marker.snippet! //下段85行目くらいmarker=snipet
+        //presentedViewController.lunch = marker.//????
         presentedViewController.modalPresentationStyle = .overCurrentContext
         presentedViewController.modalTransitionStyle = .crossDissolve //tap store.info action
         self.present(presentedViewController, animated: true, completion: nil)
