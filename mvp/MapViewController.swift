@@ -77,13 +77,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         self.present(presentedViewController, animated: true, completion: nil)
     }
     
-    func drawMap(data: [[String]]) {
+    func drawMap(data: [Store]) {
         for restaurant in data {
-            let store = Store(restaurant: restaurant)
             let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2DMake(store.langitude!, store.longitude!)
-            marker.title = store.name
-            marker.snippet = store.genre
+            marker.position = CLLocationCoordinate2DMake(restaurant.langitude!, restaurant.longitude!)
+            marker.title = restaurant.name
+            marker.snippet = restaurant.genre
+            marker.setValue(restaurant.name, forKey: "name")
             marker.map = mapView
         }
     }

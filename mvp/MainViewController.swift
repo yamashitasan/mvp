@@ -11,13 +11,17 @@ import Pulley
 import GoogleMaps
 
 class MainViewController: PulleyViewController {
+    var stores : [Store] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         setDrawerPosition(position: .collapsed, animated: true)
         
         let data = readFile(name: "data", type: "csv")
+        for restaurant in data {
+            stores.append(Store(restaurant: restaurant))
+        }
         let mapVC = primaryContentViewController as! MapViewController
-        mapVC.drawMap(data: data)
+        mapVC.drawMap(data: stores)
         
     }
     
