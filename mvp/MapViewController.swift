@@ -15,8 +15,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
 
     lazy var mapView = GMSMapView()
     var allStores : [Store] = []
-    var activatedStores : [Store] = []
-    lazy var lines : [GMSPolyline] = []
+    var activatedStores : [Store] = [] {
+        didSet {
+            let mainVC = self.parent as! MainViewController
+            mainVC.orderRefreshCells(activatedStores: activatedStores)
+        }
+    }
+    lazy var linesOnMap : [GMSPolyline] = []
     
     
     override func viewDidLoad() {
@@ -44,11 +49,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
             activatedStores.append(tappedStore)
         }
         
-        let mainVC = self.parent as! MainViewController
-        mainVC.orderRefreshCells(activatedStores: activatedStores)
-        
         //clear lines in map
-        for line in lines {
+        for line in linesOnMap {
             line.map = nil
         }
         
@@ -57,13 +59,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     }
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "InfoViewController") as! InfoViewController
+        let infoVC = self.storyboard?.instantiateViewController(withIdentifier: "InfoViewController") as! InfoViewController
         let tappedStore = marker.userData as! Store
-        presentedViewController.setRestaurantInfo(restaurant: tappedStore)
+        infoVC.setRestaurantInfo(selectedRestaurant: tappedStore)
 
-        presentedViewController.modalPresentationStyle = .overCurrentContext
-        presentedViewController.modalTransitionStyle = .crossDissolve //tap store.info action
-        self.present(presentedViewController, animated: true, completion: nil)
+        infoVC.modalPresentationStyle = .overCurrentContext
+        infoVC.modalTransitionStyle = .crossDissolve //tap store.info action
+        self.present(infoVC, animated: true, completion: nil)
     }
     
     func drawMap(data: [Store]) {
@@ -77,38 +79,36 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
             marker.map = mapView
         }
     }
-    
     func drawPath(between restaurants:[Store]) {
-        if restaurants.count > 1 {
-            for index in 2...restaurants.count {
-                let origin = "\(restaurants[index-2].langitude ?? 0),\(restaurants[index-2].longitude ?? 0)"
-                let destination = "\(restaurants[index-1].langitude ?? 0),\(restaurants[index-1].longitude ?? 0)"
-                let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=walking&key=AIzaSyB4jL4U0lVE7gKM2eUmBXAdy1Y7ngkQ0xI"
-                print(url)
-                Alamofire.request(url).responseJSON { response in
-                    do {
-                        let json = try JSON(data: response.data!)
-
-                        let routes = json["routes"].arrayValue
+        var index = restaurants.count
+        while index > 1 {
+            index -= 1
+            let origin = "\(restaurants[index-2].langitude ?? 0),\(restaurants[index-2].longitude ?? 0)"
+            let destination = "\(restaurants[index-1].langitude ?? 0),\(restaurants[index-1].longitude ?? 0)"
+            let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=walking&key=AIzaSyB4jL4U0lVE7gKM2eUmBXAdy1Y7ngkQ0xI"
+            Alamofire.request(url).responseJSON { response in
+                do {
+                    let json = try JSON(data: response.data!)
+                    let routes = json["routes"].arrayValue
                     
-                        for route in routes {
-                            let routeOverviewPolyline = route["overview_polyline"].dictionary
-                            let points = routeOverviewPolyline?["points"]?.stringValue
-                            let path = GMSPath.init(fromEncodedPath: points!)
-                            let polyline = GMSPolyline.init(path: path)
-                            polyline.strokeColor = UIColor.red
-                            polyline.strokeWidth = 3.0
-                            self.lines.append(polyline)
-                            polyline.map = self.mapView
-                        }
-                    } catch {
-                        fatalError()
+                    for route in routes {
+                        let routeOverviewPolyline = route["overview_polyline"].dictionary
+                        let points = routeOverviewPolyline?["points"]?.stringValue
+                        let path = GMSPath.init(fromEncodedPath: points!)
+                        self.drawLinesForPath(path: path!, color: UIColor.red, width: 3.0)
                     }
-                    
+                } catch {
+                    fatalError()
                 }
-
             }
         }
+    }
+    func drawLinesForPath(path: GMSPath, color: UIColor, width: CGFloat) {
+        let polyline = GMSPolyline.init(path: path)
+        polyline.strokeColor = color
+        polyline.strokeWidth = width
+        self.linesOnMap.append(polyline)
+        polyline.map = self.mapView
     }
 }
 

@@ -11,7 +11,11 @@ import GoogleMaps
 
 class RouteViewController: UITableViewController {
     
-    var showingStores : [Store] = []
+    var showingStores : [Store] = [] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,10 +52,6 @@ class RouteViewController: UITableViewController {
         // Configure the cell...
 
         return cell
-    }
-    
-    func refreshCells() {
-        self.tableView.reloadData()
     }
 
     /*

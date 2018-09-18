@@ -16,8 +16,8 @@ class MainViewController: PulleyViewController {
         super.viewDidLoad()
         setDrawerPosition(position: .collapsed, animated: true)
         
-        let data = readFile(name: "data", type: "csv")
-        for restaurant in data {
+        let restaurantsData = readFile(name: "data", type: "csv")
+        for restaurant in restaurantsData {
             stores.append(Store(restaurant: restaurant))
         }
         let mapVC = primaryContentViewController as! MapViewController
@@ -28,7 +28,6 @@ class MainViewController: PulleyViewController {
     func orderRefreshCells(activatedStores: [Store]) {
         let routeVC = drawerContentViewController.childViewControllers[0] as! RouteViewController
         routeVC.showingStores = activatedStores
-        routeVC.refreshCells()
     }
     
     func readFile(name: String, type: String) -> [[String]] {

@@ -10,7 +10,7 @@ import UIKit
 
 class InfoViewController: UIViewController {
 
-    lazy var store = Store(restaurant: [])
+    lazy var presentingStore = Store(restaurant: [])
     
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -25,11 +25,11 @@ class InfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.nameLabel.text = self.store.name
-        self.genreLabel.text = self.store.genre
-        self.lunchTimeLabel.text = self.store.lunchTime
-        self.lunchBudgetLabel.text = self.store.lunchBudget
-        self.dinnerBudgetLabel.text = self.store.dinnerBudget
+        self.nameLabel.text = self.presentingStore.name
+        self.genreLabel.text = self.presentingStore.genre
+        self.lunchTimeLabel.text = self.presentingStore.lunchTime
+        self.lunchBudgetLabel.text = self.presentingStore.lunchBudget
+        self.dinnerBudgetLabel.text = self.presentingStore.dinnerBudget
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,8 +37,8 @@ class InfoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setRestaurantInfo(restaurant: Store) {
-        self.store = restaurant
+    func setRestaurantInfo(selectedRestaurant: Store) {
+        self.presentingStore = selectedRestaurant
     }
     
     
