@@ -16,17 +16,20 @@ class InfoViewController: UIViewController {
     
     @IBOutlet weak var genreLabel: UILabel!
     
-    @IBOutlet weak var lunchLabel: UILabel!
+    @IBOutlet weak var lunchTimeLabel: UILabel!
     
-    @IBOutlet weak var urlLabel: UILabel!
+    @IBOutlet weak var lunchBudgetLabel: UILabel!
+    
+    @IBOutlet weak var dinnerBudgetLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.nameLabel.text = self.store.name
         self.genreLabel.text = self.store.genre
-        self.lunchLabel.text = self.store.lunch
-        self.urlLabel.text = self.store.url
+        self.lunchTimeLabel.text = self.store.lunchTime
+        self.lunchBudgetLabel.text = self.store.lunchBudget
+        self.dinnerBudgetLabel.text = self.store.dinnerBudget
     }
 
     override func didReceiveMemoryWarning() {

@@ -70,10 +70,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h3O-aP-adr">
-                                <rect key="frame" x="38" y="77" width="300" height="534"/>
+                                <rect key="frame" x="38" y="134" width="300" height="420"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lunchLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oB0-b4-kAV">
-                                        <rect key="frame" x="108" y="294" width="84" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8v-iT-QoU">
+                                        <rect key="frame" x="104" y="50" width="93" height="56"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lunchTimeLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oB0-b4-kAV">
+                                        <rect key="frame" x="90" y="108" width="120" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dinerBudgetLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PO-k2-h4a">
+                                        <rect key="frame" x="82" y="244" width="136" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -81,9 +93,11 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="oB0-b4-kAV" firstAttribute="centerX" secondItem="h3O-aP-adr" secondAttribute="centerX" id="HiT-dG-QRr"/>
-                                    <constraint firstItem="oB0-b4-kAV" firstAttribute="top" secondItem="h3O-aP-adr" secondAttribute="top" constant="294" id="Kxp-YN-XTQ"/>
-                                    <constraint firstItem="oB0-b4-kAV" firstAttribute="width" secondItem="h3O-aP-adr" secondAttribute="width" constant="-216" id="etn-bv-FFT"/>
+                                    <constraint firstItem="P8v-iT-QoU" firstAttribute="top" secondItem="h3O-aP-adr" secondAttribute="top" priority="750" constant="50" id="2wd-qc-GYo"/>
+                                    <constraint firstItem="P8v-iT-QoU" firstAttribute="centerY" secondItem="h3O-aP-adr" secondAttribute="centerY" constant="-132.5" id="Gyu-tU-6ui"/>
+                                    <constraint firstItem="6PO-k2-h4a" firstAttribute="width" secondItem="h3O-aP-adr" secondAttribute="width" constant="-164" id="HjE-IA-aT3"/>
+                                    <constraint firstItem="P8v-iT-QoU" firstAttribute="width" secondItem="h3O-aP-adr" secondAttribute="width" constant="-207" id="JBk-Ie-gbH"/>
+                                    <constraint firstItem="P8v-iT-QoU" firstAttribute="centerX" secondItem="h3O-aP-adr" secondAttribute="centerX" id="xOr-ze-jrp"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXv-8K-p64">
@@ -92,14 +106,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Genre Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8v-iT-QoU">
-                                <rect key="frame" x="141" y="294" width="93" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="url Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWe-pS-qzB">
-                                <rect key="frame" x="111" y="451" width="157" height="39"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="lunchBudgetLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWe-pS-qzB">
+                                <rect key="frame" x="119" y="314" width="139" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -109,17 +117,18 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="h3O-aP-adr" firstAttribute="width" secondItem="cJw-1S-i3u" secondAttribute="width" multiplier="0.8" id="5BW-CC-2hh"/>
-                            <constraint firstItem="P8v-iT-QoU" firstAttribute="centerX" secondItem="h3O-aP-adr" secondAttribute="centerX" id="8DY-Va-G3u"/>
-                            <constraint firstItem="HWe-pS-qzB" firstAttribute="centerX" secondItem="0IE-OH-MNd" secondAttribute="centerX" id="DZb-dO-co1"/>
-                            <constraint firstItem="qXv-8K-p64" firstAttribute="top" secondItem="h3O-aP-adr" secondAttribute="top" constant="10" id="LPu-aD-WM5"/>
-                            <constraint firstItem="h3O-aP-adr" firstAttribute="height" secondItem="cJw-1S-i3u" secondAttribute="height" multiplier="0.8" id="f03-Xj-SVU"/>
-                            <constraint firstItem="P8v-iT-QoU" firstAttribute="centerY" secondItem="h3O-aP-adr" secondAttribute="centerY" id="hR8-s5-Lad"/>
+                            <constraint firstItem="oB0-b4-kAV" firstAttribute="top" secondItem="0IE-OH-MNd" secondAttribute="top" constant="222" id="BRc-wM-a9G"/>
+                            <constraint firstItem="0IE-OH-MNd" firstAttribute="bottom" secondItem="6PO-k2-h4a" secondAttribute="bottom" constant="268" id="GWX-yx-668"/>
+                            <constraint firstItem="qXv-8K-p64" firstAttribute="top" secondItem="0IE-OH-MNd" secondAttribute="top" constant="134" id="NAH-sG-IpH"/>
+                            <constraint firstItem="6PO-k2-h4a" firstAttribute="centerX" secondItem="0IE-OH-MNd" secondAttribute="centerX" id="QaJ-rR-R7k"/>
+                            <constraint firstItem="HWe-pS-qzB" firstAttribute="top" secondItem="0IE-OH-MNd" secondAttribute="top" constant="294" id="bQj-5M-d2S"/>
+                            <constraint firstItem="HWe-pS-qzB" firstAttribute="centerX" secondItem="0IE-OH-MNd" secondAttribute="centerX" id="ese-bS-GH9"/>
                             <constraint firstItem="qXv-8K-p64" firstAttribute="width" secondItem="h3O-aP-adr" secondAttribute="width" id="huo-qq-WT9"/>
-                            <constraint firstItem="0IE-OH-MNd" firstAttribute="bottom" secondItem="HWe-pS-qzB" secondAttribute="bottom" constant="150" id="j5d-DT-C12"/>
                             <constraint firstItem="qXv-8K-p64" firstAttribute="centerX" secondItem="h3O-aP-adr" secondAttribute="centerX" id="lfK-VR-PLl"/>
+                            <constraint firstItem="oB0-b4-kAV" firstAttribute="centerX" secondItem="0IE-OH-MNd" secondAttribute="centerX" id="pDt-se-pg5"/>
                             <constraint firstItem="h3O-aP-adr" firstAttribute="centerX" secondItem="0IE-OH-MNd" secondAttribute="centerX" id="s9h-NV-zIz"/>
-                            <constraint firstItem="P8v-iT-QoU" firstAttribute="width" secondItem="h3O-aP-adr" secondAttribute="width" id="yaf-Th-9dW"/>
-                            <constraint firstItem="h3O-aP-adr" firstAttribute="centerY" secondItem="0IE-OH-MNd" secondAttribute="centerY" id="yz7-e2-knW"/>
+                            <constraint firstItem="0IE-OH-MNd" firstAttribute="bottom" secondItem="h3O-aP-adr" secondAttribute="bottom" constant="113" id="uAB-fh-CG0"/>
+                            <constraint firstItem="h3O-aP-adr" firstAttribute="top" secondItem="0IE-OH-MNd" secondAttribute="top" constant="114" id="z5t-j6-f40"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0IE-OH-MNd"/>
                         <connections>
@@ -127,10 +136,11 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="dinnerBudgetLabel" destination="6PO-k2-h4a" id="j8T-Wd-DWm"/>
                         <outlet property="genreLabel" destination="P8v-iT-QoU" id="ARv-bE-LfW"/>
-                        <outlet property="lunchLabel" destination="oB0-b4-kAV" id="adc-vV-Nhe"/>
+                        <outlet property="lunchBudgetLabel" destination="HWe-pS-qzB" id="ZEx-ps-u7J"/>
+                        <outlet property="lunchTimeLabel" destination="oB0-b4-kAV" id="RUt-Zr-UZp"/>
                         <outlet property="nameLabel" destination="qXv-8K-p64" id="Mah-Ca-EEX"/>
-                        <outlet property="urlLabel" destination="HWe-pS-qzB" id="65q-4V-3NK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Weh-K2-zfj" userLabel="First Responder" sceneMemberID="firstResponder"/>
