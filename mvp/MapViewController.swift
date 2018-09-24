@@ -19,8 +19,20 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         didSet {
             let mainVC = self.parent as! MainViewController
             mainVC.orderRefreshCells(activatedStores: activatedStores)
+            
+            drawPath(between: activatedStores)
         }
     }
+    /*
+    var timeBtwEachStores : [String] = [] {
+        didSet {
+            if timeBtwEachStores.isEmpty {
+            } else {
+                print(timeBtwEachStores)
+            }
+        }
+    }
+    */
     lazy var linesOnMap : [GMSPolyline] = []
     
     
@@ -48,13 +60,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         } else {
             activatedStores.append(tappedStore)
         }
-        
-        //clear lines in map
-        for line in linesOnMap {
-            line.map = nil
-        }
-        
-        drawPath(between: activatedStores)
         return false
     }
     
@@ -80,27 +85,40 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         }
     }
     func drawPath(between restaurants:[Store]) {
+        
+        //clear lines in map
+        for line in linesOnMap {
+            line.map = nil
+        }
+        
         var index = restaurants.count
         while index > 1 {
-            index -= 1
             let origin = "\(restaurants[index-2].langitude ?? 0),\(restaurants[index-2].longitude ?? 0)"
             let destination = "\(restaurants[index-1].langitude ?? 0),\(restaurants[index-1].longitude ?? 0)"
             let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=walking&key=AIzaSyB4jL4U0lVE7gKM2eUmBXAdy1Y7ngkQ0xI"
+            //self.timeBtwEachStores = []
             Alamofire.request(url).responseJSON { response in
                 do {
                     let json = try JSON(data: response.data!)
                     let routes = json["routes"].arrayValue
-                    
                     for route in routes {
                         let routeOverviewPolyline = route["overview_polyline"].dictionary
                         let points = routeOverviewPolyline?["points"]?.stringValue
                         let path = GMSPath.init(fromEncodedPath: points!)
+                        /*
+                        let legs = route["legs"].arrayValue
+                        for leg in legs {
+                            let duration = leg["duration"].dictionary!["text"]!.stringValue
+                            self.timeBtwEachStores.insert(duration, at: 0)
+                        }
+                        */
                         self.drawLinesForPath(path: path!, color: UIColor.red, width: 3.0)
                     }
                 } catch {
                     fatalError()
                 }
             }
+            index -= 1
         }
     }
     func drawLinesForPath(path: GMSPath, color: UIColor, width: CGFloat) {

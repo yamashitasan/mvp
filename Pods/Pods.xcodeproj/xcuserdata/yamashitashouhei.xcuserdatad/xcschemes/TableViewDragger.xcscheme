@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "54E8440F4B6345EA551F6CCA474DBEE5"
-               BlueprintName = "Pulley"
+               BlueprintIdentifier = "DF30ED8DCAEBE2BCAE7510C640F33F89"
+               BlueprintName = "TableViewDragger"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "Pulley.framework">
+               BuildableName = "TableViewDragger.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

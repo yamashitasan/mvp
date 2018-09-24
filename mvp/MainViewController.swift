@@ -15,19 +15,22 @@ class MainViewController: PulleyViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setDrawerPosition(position: .collapsed, animated: true)
-        
         let restaurantsData = readFile(name: "data", type: "csv")
         for restaurant in restaurantsData {
             stores.append(Store(restaurant: restaurant))
         }
         let mapVC = primaryContentViewController as! MapViewController
         mapVC.drawMap(data: stores)
-        
     }
     
     func orderRefreshCells(activatedStores: [Store]) {
         let routeVC = drawerContentViewController.childViewControllers[0] as! RouteViewController
         routeVC.showingStores = activatedStores
+    }
+    
+    func implyOrderChanges(showingStores: [Store]) {
+        let mapVC = primaryContentViewController as! MapViewController
+        mapVC.activatedStores = showingStores
     }
     
     func readFile(name: String, type: String) -> [[String]] {

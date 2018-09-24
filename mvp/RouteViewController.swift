@@ -8,18 +8,28 @@
 
 import UIKit
 import GoogleMaps
+import TableViewDragger
+import Pulley
 
-class RouteViewController: UITableViewController {
+class RouteViewController: UITableViewController, PulleyDrawerViewControllerDelegate {
+    
+    var dragger: TableViewDragger!
+    var mainVC: MainViewController? = nil
     
     var showingStores : [Store] = [] {
         didSet {
             self.tableView.reloadData()
         }
     }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        dragger = TableViewDragger(tableView: tableView)
+        dragger.availableHorizontalScroll = true
+        dragger.dataSource = self
+        dragger.delegate = self
+        
+        mainVC = self.parent?.parent as? MainViewController
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -52,6 +62,15 @@ class RouteViewController: UITableViewController {
         // Configure the cell...
 
         return cell
+    }
+    
+    func dragger(_ dragger: TableViewDragger, willBeginDraggingAt indexPath: IndexPath) {
+        self.mainVC!.allowsUserDrawerPositionChange = false
+    }
+    
+    func dragger(_ dragger: TableViewDragger, didEndDraggingAt indexPath: IndexPath) {
+        self.mainVC!.allowsUserDrawerPositionChange = true
+        mainVC?.implyOrderChanges(showingStores: showingStores)
     }
 
     /*
@@ -99,4 +118,15 @@ class RouteViewController: UITableViewController {
     }
     */
 
+}
+
+extension RouteViewController: TableViewDraggerDataSource, TableViewDraggerDelegate {
+    func dragger(_ dragger: TableViewDragger, moveDraggingAt indexPath: IndexPath, newIndexPath: IndexPath) -> Bool {
+        let item = showingStores[indexPath.row]
+        showingStores.remove(at: indexPath.row)
+        showingStores.insert(item, at: newIndexPath.row)
+        tableView.moveRow(at: indexPath, to: newIndexPath)
+        
+        return true
+    }
 }

@@ -11,6 +11,7 @@ target 'mvp' do
     pod 'Alamofire', '~> 4.7'
     pod 'SwiftyJSON', '~> 4.0'
     pod 'Pulley'
+    pod 'TableViewDragger'
 
   target 'mvpTests' do
     inherit! :search_paths
